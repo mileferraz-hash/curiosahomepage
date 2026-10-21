@@ -921,7 +921,7 @@ form.addEventListener('submit',async e=>{
   }
   const data=new URLSearchParams();
   ['nome','empresa','email','whatsapp','interesse','mensagem'].forEach(k=>data.append(k,form.elements[k].value.trim()));
-  data.append('evento','Site Curiosa (home)'); data.append('tipo',form.elements.interesse.value); data.append('servicos',form.elements.interesse.value);
+  data.append('evento','[Site] '+(form.elements.empresa.value.trim()||'sem empresa')); data.append('tipo',form.elements.interesse.value); data.append('servicos',form.elements.interesse.value);
   const params=new URLSearchParams(location.search);['utm_source','utm_medium','utm_campaign','utm_content'].forEach(k=>data.append(k,params.get(k)||''));
   data.append('pagina',location.href);
   sendBtn.disabled=true; sendBtn.firstChild.textContent='Enviando... ';
