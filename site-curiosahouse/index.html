@@ -134,7 +134,7 @@ h3{font-size:clamp(26px,2.6vw,34px)}
 .hero-art .ring.two{inset:12%;border-style:dashed;border-color:rgba(201,188,255,.18);animation:spin 60s linear infinite}
 .hero-art .mark{position:absolute;inset:16% 18% 12%;background:url("assets/logo-completo-creme.png") center/contain no-repeat;filter:drop-shadow(0 30px 40px rgba(6,6,11,.55));animation:bob 6s ease-in-out infinite;transform-origin:50% 90%}
 .hero-art .stat{position:absolute;background:rgba(12,12,22,.78);border:1px solid var(--line);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-radius:18px;padding:12px 16px;animation:bob 5s ease-in-out infinite}
-.hero-art .stat b{display:block;font-family:var(--serif);font-weight:400;font-size:28px;line-height:1}
+.hero-art .stat b{display:block;font-family:var(--serif);font-weight:400;font-style:italic;font-size:24px;line-height:1}
 .hero-art .stat span{display:block;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--cream-dim);margin-top:6px;max-width:16ch;line-height:1.35}
 .hero-art .s1{left:-4%;top:14%;animation-delay:-1s}
 .hero-art .s2{right:-6%;top:46%;animation-delay:-2.5s}
@@ -184,6 +184,7 @@ h3{font-size:clamp(26px,2.6vw,34px)}
 .feat-card p{color:var(--cream-dim);max-width:44ch}
 .feat-card .proof{margin-top:30px;padding-top:22px;border-top:1px solid var(--line);display:flex;align-items:flex-end;justify-content:space-between;gap:18px;flex-wrap:wrap}
 .feat-card .proof strong{display:block;font-family:var(--serif);font-size:clamp(44px,5vw,64px);line-height:1;font-weight:400;font-variant-numeric:tabular-nums}
+.feat-card .proof strong.word{font-size:clamp(26px,2.6vw,34px);font-style:italic;line-height:1.1}
 .feat-card .proof small{font-size:13px;color:var(--cream-dim);display:block;margin-top:8px;max-width:30ch}
 .feat-card .go{width:58px;height:58px;border-radius:50%;background:var(--cream);color:var(--ink);display:grid;place-items:center;font-size:22px;transition:transform .35s;flex-shrink:0}
 .feat-card:hover .go{transform:rotate(-45deg)}
@@ -210,26 +211,45 @@ h3{font-size:clamp(26px,2.6vw,34px)}
 .face.front b{font-family:var(--serif);font-weight:400;font-size:clamp(32px,3.2vw,44px);line-height:1.05;position:relative;z-index:1}
 .face.front b em{color:var(--lilac)}
 .face.front i{font-style:normal;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:rgba(243,236,223,.6);position:relative;z-index:1}
+.face.front{transition:opacity .2s .25s}
+.flip:hover .face.front,.flip[aria-pressed="true"] .face.front{opacity:0}
+.face.back{opacity:0;transition:opacity .2s .25s}
+.flip:hover .face.back,.flip[aria-pressed="true"] .face.back{opacity:1}
 .face.back{transform:rotateY(180deg);background:linear-gradient(140deg,var(--blue),var(--violet));color:#fff;justify-content:flex-end}
 .face.back b{font-family:var(--serif);font-weight:400;font-size:clamp(26px,2.4vw,32px);line-height:1.15}
 .face.back span{font-size:16.5px;line-height:1.55;opacity:.92}
 @media (max-width:900px){.flips{grid-template-columns:1fr}.flip-in{min-height:240px}}
-.founder{margin-top:110px;display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:center}
+.quote{margin:110px auto 0;max-width:1000px;text-align:center}
+.quote blockquote{font-family:var(--serif);font-size:clamp(34px,5.2vw,72px);line-height:1.12;letter-spacing:-.02em;text-wrap:balance}
+.quote .qw{display:inline-block;opacity:.22;transition:opacity .5s,color .3s,transform .3s;cursor:default}
+.quote .qw.on{opacity:1}
+.quote .qw.key{font-style:italic;color:var(--blue)}
+.quote .qw:hover{color:var(--violet);font-style:italic;transform:translateY(-4px)}
+.quote figcaption{display:inline-flex;align-items:center;gap:14px;margin-top:34px;text-align:left}
+.quote figcaption b{display:block;font-family:var(--serif);font-weight:400;font-size:24px;text-transform:none;letter-spacing:0;color:var(--paper-ink);margin-bottom:2px}
+.quote figcaption span{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--paper-dim)}
+.quote .q-logo{height:34px;background-image:url("assets/logo-reduzido-escuro.png")}
+@media (prefers-reduced-motion:reduce){.quote .qw{opacity:1}}
+.founder{margin-top:110px;display:grid;grid-template-columns:minmax(0,340px) 1fr;gap:56px;align-items:center}
 .founder > *{min-width:0}
 .founder-photo{position:relative}
-.founder-photo img{border-radius:28px;width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 20%}
+.founder-photo img{border-radius:28px;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;object-position:50% 20%}
 .founder-photo .stamp{position:absolute;right:-18px;top:28px;width:128px;height:128px;border-radius:50%;background:var(--ink);color:var(--cream);display:grid;place-items:center;text-align:center;font-family:var(--serif);font-size:15px;line-height:1.15;animation:spin 30s linear infinite}
 .founder-photo .stamp svg{position:absolute;inset:0;width:100%;height:100%}
 .founder-photo .stamp b{font-size:34px;font-weight:400;display:block;animation:spin 30s linear infinite reverse}
-.founder h3{font-size:clamp(40px,4.4vw,60px);margin:14px 0 22px}
-.founder p{font-size:18px;max-width:58ch}
-.founder p+p{margin-top:14px}
-.founder blockquote{margin-top:30px;font-family:var(--serif);font-style:italic;font-size:clamp(22px,2.2vw,28px);line-height:1.35;padding-left:22px;border-left:2px solid var(--blue)}
+.founder h3{font-size:clamp(34px,3.6vw,48px);margin:12px 0 18px}
+.founder p{font-size:16.5px;max-width:60ch}
+.founder p+p{margin-top:12px}
+.founder blockquote{margin-top:24px;font-family:var(--serif);font-style:italic;font-size:clamp(19px,1.8vw,23px);line-height:1.35;padding-left:22px;border-left:2px solid var(--blue)}
 .facts{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
 @media (max-width:900px){
-  .founder{grid-template-columns:1fr}
-  .founder-photo .stamp{right:10px;width:104px;height:104px;font-size:13px}
-  .founder-photo .stamp b{font-size:28px}
+  .founder{grid-template-columns:1fr;gap:28px;margin-top:80px}
+  .founder-photo{width:180px}
+  .founder-photo img{aspect-ratio:1;border-radius:50%;object-position:50% 18%}
+  .founder-photo .stamp{right:-26px;top:auto;bottom:-6px;width:84px;height:84px;font-size:11px}
+  .founder-photo .stamp svg text{font-size:10px}
+  .founder-photo .stamp b{font-size:22px}
+  .founder p{font-size:15.5px}
 }
 
 /* ===== SERVIÇOS ===== */
@@ -356,6 +376,7 @@ footer{border-top:1px solid var(--line);padding-block:70px 40px;position:relativ
 .cta-end h2{max-width:18ch;margin:16px auto 30px}
 
 /* case view */
+.case-note{display:inline-block;font-size:14px;line-height:1.5;color:var(--cream);background:rgba(122,92,242,.16);border:1px solid rgba(201,188,255,.3);border-radius:14px;padding:12px 16px;margin:-6px 0 22px;max-width:70ch}
 .case-hero .poster{aspect-ratio:21/9;margin-top:50px}
 @media (max-width:700px){.case-hero .poster{aspect-ratio:4/3}}
 .case-body{display:grid;grid-template-columns:240px 1fr;gap:28px 60px;padding-block:30px 40px}
@@ -424,7 +445,6 @@ footer{border-top:1px solid var(--line);padding-block:70px 40px;position:relativ
     <ul class="menu" id="menu">
       <li><a href="#inicio">Home</a></li>
       <li><a href="#quem-somos">Quem somos</a></li>
-      <li><a href="#cases">Cases</a></li>
       <li class="has-sub">
         <button class="drop" type="button" aria-expanded="false" aria-controls="sub-ofertas" id="drop-btn">O que oferecemos
           <svg viewBox="0 0 12 8" aria-hidden="true"><path d="M1 1l5 5 5-5" stroke="currentColor" fill="none" stroke-width="1.6"/></svg>
@@ -459,7 +479,7 @@ footer{border-top:1px solid var(--line);padding-block:70px 40px;position:relativ
         <h1>Curiosidade <em>instintiva</em>, criatividade com <em>intenção</em>.</h1>
         <p class="sub">Uma house de curiosidade que atrela <b>publicidade ao business</b>. Campanhas, lançamentos e eventos com começo, meio e resultado.</p>
         <div class="hero-cta">
-          <a class="btn" href="#cases">Ver os cases <span class="arr">→</span></a>
+          <a class="btn" href="#servicos">O que fazemos <span class="arr">→</span></a>
           <a class="btn ghost" href="#contato">Pedir uma proposta</a>
         </div>
         <div class="byline">
@@ -470,9 +490,9 @@ footer{border-top:1px solid var(--line);padding-block:70px 40px;position:relativ
       <div class="hero-art" role="img" aria-label="Logo da Curiosa House: uma luneta no tripé">
         <div class="glow"></div><div class="ring"></div><div class="ring two"></div>
         <div class="mark"></div>
-        <div class="stat s1"><b>2.659</b><span>pessoas em uma ativação</span></div>
-        <div class="stat s2"><b>+30%</b><span>de conversão em MQL</span></div>
-        <div class="stat s3"><b>46%</b><span>de expansão de marca</span></div>
+        <div class="stat s1"><b>Campanhas</b><span>publicitárias</span></div>
+        <div class="stat s2"><b>Eventos</b><span>de ponta a ponta</span></div>
+        <div class="stat s3"><b>Go to market</b><span>e marketing 360</span></div>
       </div>
     </div>
   </div>
@@ -493,7 +513,7 @@ footer{border-top:1px solid var(--line);padding-block:70px 40px;position:relativ
           <p>Conceito, manifesto, atos e mídia pensados a partir do momento do negócio. Cada peça sabe qual número precisa mover: lembrança de marca, lead qualificado ou matrícula.</p>
         </div>
         <div class="proof">
-          <div><strong data-count="30" data-prefix="+" data-suffix="%">+30%</strong><small>de conversão em MQL na campanha de 10 anos do MBA em Marketing USP/Esalq</small></div>
+          <div><strong class="word">Do conceito ao remarketing</strong><small>Manifesto, atos, mídia on e off e KPIs por etapa do funil.</small></div>
           <span class="go" aria-hidden="true">→</span>
         </div>
       </a>
@@ -505,7 +525,7 @@ footer{border-top:1px solid var(--line);padding-block:70px 40px;position:relativ
           <p>A divulgação de ponta a ponta: comunidade aquecida antes, ativação que captura lead no stand e conteúdo que continua vendendo depois que as luzes apagam.</p>
         </div>
         <div class="proof">
-          <div><strong data-count="2659">2.659</strong><small>pessoas na ativação de marca do MBA USP/Esalq no RD Summit 2025</small></div>
+          <div><strong class="word">Antes, durante e depois</strong><small>Comunidade, ativação de marca, captação de leads e conteúdo pós-evento.</small></div>
           <span class="go" aria-hidden="true">↗</span>
         </div>
       </a>
@@ -541,25 +561,10 @@ footer{border-top:1px solid var(--line);padding-block:70px 40px;position:relativ
       </button>
     </div>
 
-    <div class="founder">
-      <div class="founder-photo rv">
-        <img src="assets/jami-banco.webp" alt="Jamile Ferraz sorrindo, sentada num banquinho de madeira" width="860" height="1151" loading="lazy">
-        <div class="stamp" aria-hidden="true">
-          <svg viewBox="0 0 128 128"><defs><path id="circ" d="M64 64m-48 0a48 48 0 1 1 96 0a48 48 0 1 1-96 0"/></defs><text font-size="8.6" letter-spacing="1" fill="#f3ecdf" font-family="Manrope, sans-serif" font-weight="600"><textPath href="#circ" textLength="296" lengthAdjust="spacing">10 ANOS DE EXPERIÊNCIA · 10 ANOS DE EXPERIÊNCIA ·</textPath></text></svg>
-          <b>10+</b>
-        </div>
-      </div>
-      <div>
-        <span class="eyebrow">Quem está por trás das lentes</span>
-        <h3>Jamile <em>Ferraz</em></h3>
-        <p>Jornalista e designer, com especialização em Product Marketing e UX Writing, Jami tem mais de dez anos de estrada na publicidade. A trajetória nunca foi linear: ela transita entre o on, o off e o cross-media com uma visão 360 de verdade.</p>
-        <p>Hoje atua como criativa na Curiosa House, casa que criou para atender clientes fora do óbvio.</p>
-        <p>Como Product Marketing Manager no MBA USP/Esalq, liderou lançamentos, campanhas e ativações em eventos como o RD Summit. Antes, coordenou conteúdo e planejamento estratégico em agências de marketing.</p>
-        <p>Em 2018, estudou social media e personal branding em Stanford.</p>
-        <p>O diferencial está no encontro dos dois mundos: entender o que um produto precisa comunicar e ter cabeça de publicitária para comunicar isso gerando receita.</p>
-        <blockquote>“Apenas a pessoa curiosa é capaz de criar soluções criativas e resolutivas.”</blockquote>
-      </div>
-    </div>
+    <figure class="quote" id="quote">
+      <blockquote id="quoteText">Apenas a pessoa curiosa é capaz de criar soluções criativas e resolutivas.</blockquote>
+      <figcaption><i class="logo-r q-logo" aria-hidden="true"></i><span><b>Jamile Ferraz</b>Fundadora da Curiosa House</span></figcaption>
+    </figure>
   </div>
 </section>
 
@@ -603,25 +608,6 @@ footer{border-top:1px solid var(--line);padding-block:70px 40px;position:relativ
   </div>
 </section>
 
-<section class="pad" id="cases" style="padding-top:40px">
-  <div class="wrap">
-    <div class="cases-head">
-      <div>
-        <span class="eyebrow">Cases de sucesso</span>
-        <h2 class="rv" style="margin-top:18px;max-width:14ch">Ideias que viraram <em>número</em>.</h2>
-      </div>
-      <p class="lead" style="max-width:40ch">Quatro projetos reais, contados do briefing ao resultado. Clique para ver cada case completo.</p>
-    </div>
-    <div class="case-grid" id="caseGrid"></div>
-
-    <div class="stats rv">
-      <div class="stat"><strong data-count="2000" data-prefix="+">+2.000</strong><span>MQLs gerados em uma única ativação de evento</span></div>
-      <div class="stat"><strong data-count="46" data-suffix="%">46%</strong><span>de expansão de marca fora do estado de São Paulo</span></div>
-      <div class="stat"><strong data-count="47.6" data-decimals="1" data-suffix="%">47,6%</strong><span>de SQLs que viraram matrícula</span></div>
-      <div class="stat"><strong data-count="30" data-prefix="+" data-suffix="%">+30%</strong><span>de conversão em MQL com campanha temática</span></div>
-    </div>
-  </div>
-</section>
 
 <div class="band ink" data-speed="0.45" aria-hidden="true"><div class="band-track"><span>Chegou um briefing na mesa? <i class="logo-r" aria-hidden="true"></i> Conta pra gente <i class="logo-r" aria-hidden="true"></i> Chegou um briefing na mesa? <i class="logo-r" aria-hidden="true"></i> Conta pra gente <i class="logo-r" aria-hidden="true"></i></span></div></div>
 
@@ -684,7 +670,7 @@ footer{border-top:1px solid var(--line);padding-block:70px 40px;position:relativ
     <div class="foot-row">
       <p>Curiosidade instintiva, criatividade com intenção. · Piracicaba, SP</p>
       <div class="foot-links">
-        <a href="#quem-somos">Quem somos</a><a href="#cases">Cases</a><a href="#campanhas">Campanhas</a><a href="https://eventos.curiosahouse.com.br/" target="_blank" rel="noopener">Marketing para eventos ↗</a><a href="#go-to-market">Go to market</a><a href="#marketing-360">Marketing 360</a><a href="https://www.instagram.com/curiosahouse/" target="_blank" rel="noopener">@curiosahouse ↗</a>
+        <a href="#quem-somos">Quem somos</a><a href="#campanhas">Campanhas</a><a href="https://eventos.curiosahouse.com.br/" target="_blank" rel="noopener">Marketing para eventos ↗</a><a href="#go-to-market">Go to market</a><a href="#marketing-360">Marketing 360</a><a href="https://www.instagram.com/curiosahouse/" target="_blank" rel="noopener">@curiosahouse ↗</a>
       </div>
     </div>
     <p class="foot-row" style="margin-top:20px;font-size:12px;color:var(--cream-faint)">© 2026 Curiosa House · officecuriosa@gmail.com · (19) 98146-0819</p>
@@ -699,105 +685,6 @@ footer{border-top:1px solid var(--line);padding-block:70px 40px;position:relativ
 const SHEETS_ENDPOINT = "https://script.google.com/macros/s/AKfycbwNL4zbsVvNJppXrSjgEODpX4lCwNLcCylIHYEoHzSZK4fNS5LEGZVnIfZEqN4iJ5HH/exec";
 const WA = "5519981460819";
 
-/* ---------- conteúdo dos cases ---------- */
-const CASES = [
-  {
-    id:"case-cinembx", client:"MBA USP/Esalq", event:"RD Summit 2025",
-    title:"CineMBX: <em>essa experiência dá um filme</em>", short:"CineMBX no RD Summit 2025",
-    desc:"Cinco filmes, um stand-bilheteria e uma estreia nas comunidades do WhatsApp.",
-    tags:["Live marketing","Audiovisual","Comunidades"],
-    poster:{big:"2.659", small:"participantes na ativação", c:"violet", motif:"ticket"},
-    lead:"Como transformamos um stand no RD Summit em uma sala de cinema que capturou leads, gerou comunidade e virou matrícula.",
-    blocks:[
-      {l:"Desafio", pull:"Em um cenário de forte disputa pela atenção, o desafio começa <em>muito antes do evento</em>.", p:["A partir de uma visão estratégica, passamos a posicionar os MBAs em temáticas específicas, aproximando o potencial aluno de espaços de conteúdo que ele próprio escolhe acompanhar. Nos conectamos a comunidades temáticas no WhatsApp e passamos a produzir conteúdos mais aprofundados por tema, com estratégias segmentadas por canal.","A meta principal da instituição era clara: captar MQLs para as comunidades temáticas e, depois da experiência no evento, nutrir e converter esses MQLs em SQLs por meio de uma oferta."]},
-      {l:"Pesquisa e insight", pull:"Mais de 1.800 pessoas responderam. A <em>cultura pop</em> era o ponto em comum.", p:["Fizemos um levantamento com mais de 1.800 pessoas que já viviam nossos produtos para entender o que faziam depois do trabalho e dos estudos, além dos gêneros musicais e cinematográficos preferidos. Também analisamos o público do RD Summit, que no ano anterior já tinha passado pela ativação “Descubra seu futuro em 1 minuto”.","O insight decisivo veio quando cruzamos os dois públicos: séries e filmes apareciam entre as atividades mais frequentes, e o suspense se destacava como o gênero mais promissor. A pesquisa virou a fonte de inspiração da ação."]},
-      {l:"A ideia", pull:"Produzir <em>5 filmes</em>, montar uma bilheteria no RD Summit e estrear os filmes nas comunidades.", films:true, p:["Um filme para cada temática dos MBAs, com produção de alto padrão. Para otimizar custo sem perder a experiência, criamos um roteiro base para todos os filmes com uma cena resolutiva que muda conforme a temática. Cada pessoa via apenas o filme que o quiz indicou para ela."]},
-      {l:"Como funcionou", flow:[
-        ["Bilheteria","O stand do MBA USP/Esalq no RD Summit era uma bilheteria de cinema, com um mural de pôsteres “em breve”."],
-        ["Quiz","O participante fazia um quiz de personalidade que definia qual filme ele iria assistir."],
-        ["QR Code","No mural, cada pôster tinha um QR Code para entrar na comunidade temática do filme indicado."],
-        ["Estreia","Um dia depois do evento, estreamos o filme de cada temática dentro do grupo de WhatsApp."],
-        ["Pós-créditos","A cena pós-créditos era uma oferta. Cada filme era, na verdade, um curso MBA."]
-      ]},
-      {l:"Resultados", res:[["2.659","pessoas participaram da ativação de marca"],["+2.000","MQLs gerados"],["52%","começaram a conhecer a marca MBA e MBX pelo evento"],["1.729","entradas nas comunidades temáticas dos filmes"],["8","matrículas nos MBAs em 3 dias de evento"]]},
-      {l:"Nosso papel", p:["Idealização e liderança do projeto, com gestão de todos os stakeholders em todas as etapas. Coordenação de conteúdo para redes e comunidades, desenvolvimento do storytelling e treinamento das equipes do stand."], pills:["Idealização","Gestão de projeto","Storytelling","Conteúdo","Treinamento de equipe"]},
-      {l:"Ficha técnica", credits:"Idealização e liderança: Jamile Ferraz · Roteiro: Felipe Eduardo Amaral · Captação, edição e casting: Chiaro Filmes · Montadora oficial: Visione Sul · Marca: MBA USP/Esalq, uma experiência MBX. Áreas envolvidas: conteúdo, creators, eventos, design, financeiro, sales e dados."}
-    ]
-  },
-  {
-    id:"case-rd-summit-2024", client:"MBA USP/Esalq", event:"RD Summit 2024",
-    title:"Descubra seu <em>futuro</em> em 1 minuto", short:"Descubra seu futuro no RD Summit 2024",
-    desc:"Comunidade antes, tarot vocacional no stand e 9 horas de transmissão ao vivo.",
-    tags:["Comunidade","Ativação","Ao vivo"],
-    poster:{big:"1.961", small:"leads coletados na ativação", c:"blue", motif:"card"},
-    lead:"Como levamos os diferenciais do MBA USP/Esalq para dentro do RD Summit e saímos do evento com quase dois mil leads e matrículas.",
-    blocks:[
-      {l:"Desafio", pull:"Construir consciência de marca pelos atributos que fazem o produto <em>ser diferente</em>.", p:["Os diferenciais do MBA USP/Esalq eram três: certificação USP, aulas ao vivo em estúdio e especialistas USP transmitindo conhecimento. Precisávamos levar isso para a consciência da audiência e, ao mesmo tempo, trabalhar uma base com forte potencial de se tornar aluna."]},
-      {l:"Pré-evento", pull:"Em um mês e meio, <em>1.008 pessoas</em> na comunidade Squad RD by MBA USP Esalq.", p:["Um produto de alto investimento precisa de maturação de marca. Por isso criamos uma comunidade no WhatsApp para alunos e não alunos com um assunto em comum: marketing e vendas, o tema do evento."], flow:[
-        ["1","Divulgamos o projeto em primeira mão para a comunidade."],
-        ["2","Enviamos conteúdos exclusivos com professores USP."],
-        ["3","Criamos uma ação no evento só para a comunidade, com brinde exclusivo."],
-        ["4","Criamos um senso de amizade com a equipe do stand, para a comunidade conhecer os rostos que iam recebê-la."]
-      ]},
-      {l:"A ativação", pull:"O participante chegava ao stand com uma promessa: <em>descobrir o futuro dele em 1 minuto</em>.", flow:[
-        ["Cadastro","Para participar, deixava nome, e-mail e telefone."],
-        ["Totem","Respondia 4 perguntas de personalidade em um tablet. Combinadas, elas indicavam um curso MBA USP/Esalq."],
-        ["Carta","Recebia uma carta de tarot correspondente ao seu “futuro” com a marca, com QR Code para a página do curso."]
-      ]},
-      {l:"Cubo de transmissão", pull:"<em>9 horas</em> de conteúdo ao vivo direto do evento.", p:["Montamos um cubo de transmissão no stand e recebemos convidados, professores e lideranças de mercado para conversas transmitidas no YouTube durante os três dias de evento."]},
-      {l:"Resultados", res:[["1.961","leads coletados na ativação"],["96%","acima da meta de interessados"],["257","novas entradas no site a partir dos scans das cartas"],["7","matrículas realizadas no evento"],["1.008","pessoas na comunidade pré-evento"],["+700","interações em 6 transmissões ao vivo"],["+1.300","acessos nos 3 dias de evento"],["44","conteúdos produzidos nos canais digitais"]]},
-      {l:"Nosso papel", p:["Estratégia de comunidade e pré-evento, conceito da ativação, gestão de projeto e coordenação de conteúdo para redes, comunidade e transmissões."], pills:["Estratégia","Comunidade","Conceito criativo","Conteúdo ao vivo"]}
-    ]
-  },
-  {
-    id:"case-minicurso", client:"MBA USP/Esalq", event:"Product Marketing",
-    title:"Minicurso <em>Acelerando Projetos de Sucesso</em>", short:"Minicurso gratuito com certificação USP",
-    desc:"Um produto de entrada para levar a marca para fora de São Paulo e alimentar o funil.",
-    tags:["Go to market","Produto","Upsell"],
-    poster:{big:"46%", small:"de expansão de marca fora de SP", c:"teal", motif:"seal"},
-    lead:"Como um curso rápido, gratuito e com certificação USP virou porta de entrada da marca no Brasil inteiro e caminho de upsell para o MBA.",
-    blocks:[
-      {l:"Momento da marca", pull:"Em um mercado competitivo, atrair MQLs exige <em>inovação constante</em>.", p:["Ao analisar o comportamento do público, identificamos que o maior diferencial da marca, a certificação USP, tinha um enorme potencial de atração quando conectado a formatos mais rápidos e acessíveis.","Daí nasceram os minicursos: a oportunidade de viver a excelência das aulas, professores e estúdios do MBA USP/Esalq em um produto de entrada estratégico, que aumenta o desejo, fortalece a marca e amplia o funil de forma inteligente."]},
-      {l:"Objetivos", pills:["Awareness de marca fora do estado de SP","Mais matrículas com baixo investimento"]},
-      {l:"O trabalho de PMM", flow:[
-        ["GTM","Go to market e mapa de jornada do consumidor, pensado para upsell."],
-        ["Pesquisa","Pesquisa de mercado e naming do produto."],
-        ["Mensagem","Posicionamento, mensagem e treinamento de posicionamento com os times."],
-        ["Times","Integração das áreas junto ao PO para desenvolvimento e lançamento, e apoio ao customer success."],
-        ["Dados","Análise de conversão de MQL para SQL e otimização de mídia."],
-        ["Ciclo","Acompanhamento do produto antes, durante e depois do ciclo."]
-      ]},
-      {l:"Resultados", res:[["46%","de expansão de marca fora do estado de São Paulo"],["47,6%","de SQLs convertidos em matrícula (upsell)"],["+5%","de matrículas como meta do plano de desdobramento para a próxima campanha"]]},
-      {l:"Além do número", p:["Ver pessoas conquistando uma certificação da USP, muitas vezes tão sonhada, reforça o propósito de desenvolver produtos que realmente mudam trajetórias. E nada disso acontece sem os stakeholders: produto, TI, sales, customer success, dados, web, marketing e professores."]}
-    ]
-  },
-  {
-    id:"case-10-anos", client:"MBA USP/Esalq", event:"Campanha publicitária",
-    title:"Uma década nos torna <em>inconfundíveis</em>", short:"Campanha 10 anos do MBA em Marketing",
-    desc:"A celebração de 10 anos transformada em prova de autoridade.",
-    tags:["Campanha","Manifesto","OOH"],
-    poster:{big:"10", small:"anos nos tornam inconfundíveis", c:"violet", motif:"ten"},
-    lead:"Uma campanha temática para o curso de Marketing do MBA USP/Esalq, separada da comunicação institucional, com seis meses de atos on e off.",
-    blocks:[
-      {l:"Desafio criativo", pull:"Reposicionar o MBA em Marketing em um mercado <em>saturado</em>.", p:["O curso enfrentava alta competitividade e a comunicação não conseguia diferenciá-lo de concorrentes internos e externos. Depois de uma atualização na grade, era preciso resgatar o protagonismo da disciplina dentro do ecossistema da marca e encontrar um motim criativo para impactar personas de 22 a 40 anos."]},
-      {l:"Estratégia", p:["Aproveitamos o marco de 10 anos do curso para transformar a celebração em prova de autoridade. O foco foi a evolução constante: a nova grade curricular e o lançamento da comunidade no WhatsApp como hub de networking em tempo real. Saímos do falar do curso para entregar valor e conexão."], pills:["Conversão: reverter a baixa captação do 2º semestre","Awareness: +20% de lembrança de marca no país","Impacto: uma campanha fora da curva"]},
-      {l:"O insight", pull:"Heinz, o arco amarelo, a Mona Lisa, o barulho de uma garrafa abrindo. Você sabe quem são <em>sem ler o nome</em>.", p:["Todas essas referências precisaram de tempo e consistência para ficar conhecidas em proporções absurdas. O MBA em Marketing tinha exatamente isso: 10 anos de mercado e consistência para surfar a mesma onda. Não é antigo. É inconfundível."]},
-      {l:"Manifesto", pull:"“Se manter em um mercado concorrido é para quem entrega muito. E vem muito mais por aí.”", p:["Quando começamos, fomos revolucionários e fazíamos o que ninguém fazia. Enquanto o setor de educação crescia exponencialmente, crescemos com tradição, qualidade, professores renomados e uma experiência que só nós entregamos. São 10 anos de aulas ao vivo, de histórias de alunos que transformaram projetos de marketing em resultado e de um corpo docente que respira marketing."]},
-      {l:"Atos da campanha", flow:[
-        ["Nov","Abertura da campanha de 10 anos: posicionamento e mensagem para gerar conexão."],
-        ["Dez","E-book de captação de MQLs com a mesma narrativa de storytelling."],
-        ["Fev","Trend class: aula aberta com uma professora do curso para captar meio de funil. OOH no WeWork."],
-        ["Mar","Mesacast ao vivo com o coordenador e professores convidados: “Do hype ao impacto”."],
-        ["Abr","Remarketing e anúncios de topo, meio e fundo ao longo de toda a campanha até o início das aulas."]
-      ]},
-      {l:"KPIs", p:["Topo: alcance, visualizações, não seguidores atingidos, crescimento e tempo de vídeo. Meio: cliques nos stories, engajamento comparado aos conteúdos institucionais e conversão em e-books e mesacasts. Fundo: acessos ao site vindos da campanha, links parametrizados, CPC, CPA, MQLs, SQLs e matrículas."], pills:["Instagram","YouTube","LinkedIn","OOH"]},
-      {l:"Resultados", res:[["+15%","de cliques nos anúncios com a nova identidade, comparado aos institucionais"],["+30%","de conversão em MQL nas ações da campanha, comparado à campanha anterior"]]},
-      {l:"Nosso papel", p:["Idealização da campanha, liderança dos times de design e conteúdo e desenvolvimento das estratégias de lançamento, com ações focadas em conversão."], pills:["Conceito criativo","Liderança de times","Estratégia de lançamento"]}
-    ]
-  }
-];
-
-const FILMS=[["Tecnologia","Visão 360","hn0XON4Vu9E","#2f5bea","#0c0c16"],["Gestão de Projetos","O Último Projeto","NF3d1Pp96Ew","#7a5cf2","#13131f"],["Gestão de Pessoas","Entre a Névoa e a Luz","3Dv3-noAXoM","#1f6f7a","#0c0c16"],["Gestão de Negócios","Pressão 23:59","O_LkC1Oxbco","#8a3b3b","#13131f"],["Marketing e Vendas","Vozes Digitais","XSQcQnnS5pY","#b0882f","#0c0c16"]];
 
 const SERVICES = {
   "campanhas":{
@@ -813,7 +700,6 @@ const SERVICES = {
       ["KPIs por etapa do funil","Métricas definidas antes da primeira peça, para saber o que cada ato precisa entregar."]
     ],
     steps:[["Briefing e pesquisa","Entendemos o momento do negócio, o público e o que já foi dito."],["Conceito e narrativa","Criamos a ideia, o manifesto e a linha criativa."],["Atos e desdobramentos","Planejamos o calendário, os canais e as peças de cada etapa."],["Veiculação e leitura","Acompanhamos os números e ajustamos a rota durante a campanha."]],
-    proof:{id:"case-10-anos", n:"+30%", t:"de conversão em MQL na campanha “Uma década nos torna inconfundíveis”, do MBA em Marketing USP/Esalq."},
     interest:"Campanhas publicitárias"
   },
   "go-to-market":{
@@ -829,7 +715,6 @@ const SERVICES = {
       ["Lifecycle e parcerias","Reestruturação de produto baseada em pesquisa, jornadas otimizadas e análise de eventos, inserções e parcerias que aceleram metas."]
     ],
     steps:[["Entender","Pesquisa, dados e conversa com quem decide e com quem compra."],["Posicionar","Proposta de valor, mensagem, persona e narrativa."],["Preparar o time","Treinamento, pitch e materiais para vendas e CS."],["Lançar e medir","Lançamento 360, leitura de MQL para SQL e ajustes de rota."]],
-    proof:{id:"case-minicurso", n:"47,6%", t:"dos SQLs viraram matrícula no lançamento do minicurso gratuito com certificação USP, que ainda levou a marca 46% mais longe fora de SP."},
     interest:"Go to market"
   },
   "marketing-360":{
@@ -845,7 +730,6 @@ const SERVICES = {
       ["Dados e performance","KPIs de topo, meio e fundo de funil, leitura de MQL para SQL e decisões baseadas no que os números mostram."]
     ],
     steps:[["Diagnóstico","Olhamos canais, funil, conteúdo e dados do jeito que estão hoje."],["Estratégia","Plano de canais, régua e calendário com objetivos claros."],["Orquestração","Produção e gestão dos times envolvidos, com briefings bem amarrados."],["Otimização","Leitura dos resultados e ajustes contínuos."]],
-    proof:{id:"case-rd-summit-2024", n:"1.961", t:"leads em uma única ativação, com comunidade aquecida no pré-evento e 9 horas de conteúdo ao vivo."},
     interest:"Marketing 360"
   }
 };
@@ -856,54 +740,8 @@ const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const fine = matchMedia('(hover:hover) and (pointer:fine)').matches;
 function toast(t){const el=$('#toast');el.textContent=t;el.classList.add('on');clearTimeout(toast._t);toast._t=setTimeout(()=>el.classList.remove('on'),2200)}
 
-function posterHTML(p){
-  const motifs={
-    ticket:`<svg viewBox="0 0 200 90" style="position:absolute;width:62%;opacity:.1;right:-6%;bottom:6%" aria-hidden="true"><path d="M8 8h184v26a11 11 0 0 0 0 22v26H8V56a11 11 0 0 0 0-22z" fill="none" stroke="#f3ecdf" stroke-width="2"/><path d="M140 12v66" stroke="#f3ecdf" stroke-dasharray="4 5"/></svg>`,
-    card:`<svg viewBox="0 0 80 120" style="position:absolute;height:86%;opacity:.18;right:6%;top:7%;transform:rotate(10deg)" aria-hidden="true"><rect x="3" y="3" width="74" height="114" rx="8" fill="none" stroke="#f3ecdf" stroke-width="2"/><rect x="10" y="10" width="60" height="100" rx="5" fill="none" stroke="#f3ecdf"/><path d="M40 38l4 9 10 1-7 7 2 10-9-5-9 5 2-10-7-7 10-1z" fill="#f3ecdf"/></svg>`,
-    seal:`<svg viewBox="0 0 100 100" style="position:absolute;height:80%;opacity:.1;right:4%;top:10%" aria-hidden="true"><circle cx="50" cy="50" r="44" fill="none" stroke="#f3ecdf" stroke-width="2" stroke-dasharray="3 4"/><circle cx="50" cy="50" r="32" fill="none" stroke="#f3ecdf" stroke-width="2"/><path d="M36 50l9 9 19-19" fill="none" stroke="#f3ecdf" stroke-width="3"/></svg>`,
-    ten:``
-  };
-  const bigStyle = p.motif==='ten' ? 'font-style:italic;font-size:clamp(120px,18vw,240px)' : '';
-  return `<div class="blob ${p.c}" style="left:15%;top:15%"></div>${motifs[p.motif]||''}<div class="art"><div class="big" style="${bigStyle}">${p.big}<small>${p.small}</small></div></div>`;
-}
-
-/* ---------- monta cards dos cases ---------- */
-$('#caseGrid').innerHTML = CASES.map((c,i)=>`
-  <a class="case-card rv" href="#${c.id}" data-cursor="Abrir case">
-    <div class="poster"><span class="corner">${c.client}</span><span class="corner r">${c.event}</span>${posterHTML(c.poster)}</div>
-    <div class="case-meta"><div><h3>${c.short}</h3><p>${c.desc}</p></div><div class="tags">${c.tags.map(t=>`<span class="chip">${t}</span>`).join('')}</div></div>
-  </a>`).join('');
 
 /* ---------- monta views ---------- */
-function caseView(c,i){
-  const next = CASES[(i+1)%CASES.length];
-  const blocks = c.blocks.map(b=>`
-    <div class="lbl">${b.l}</div>
-    <div class="txt">
-      ${b.pull?`<p class="pull">${b.pull}</p>`:''}
-      ${(b.p||[]).map(t=>`<p class="${b.pull?'muted':''}">${t}</p>`).join('')}
-      ${b.films?`<div class="films">${FILMS.map(f=>`<a class="film" style="--c1:${f[3]};--c2:${f[4]}" href="https://youtu.be/${f[2]}" target="_blank" rel="noopener"><small>${f[0]}</small><b>${f[1]}</b><i>Assistir ↗</i></a>`).join('')}</div>`:''}
-      ${b.flow?`<ol class="flow" style="margin-top:${b.p?'18px':'0'}">${b.flow.map(f=>`<li><b>${f[0].length<4?f[0]:'✦'}</b><span>${f[0].length<4?'':`<strong>${f[0]}.</strong> `}${f[1]}</span></li>`).join('')}</ol>`:''}
-      ${b.res?`<div class="res">${b.res.map(r=>`<div><strong>${r[0]}</strong><span>${r[1]}</span></div>`).join('')}</div>`:''}
-      ${b.pills?`<div class="pills" style="margin-top:16px">${b.pills.map(t=>`<span class="chip">${t}</span>`).join('')}</div>`:''}
-      ${b.credits?`<p class="credits">${b.credits}</p>`:''}
-    </div>`).join('');
-  return `<article class="view" id="v-${c.id}" hidden>
-    <section class="view-hero case-hero"><div class="blob violet"></div><div class="blob blue slow"></div>
-      <div class="wrap">
-        <div class="crumbs"><a href="#inicio">Home</a> / <a href="#cases">Cases</a> / <span>${c.event}</span></div>
-        <h1>${c.title}</h1>
-        <p class="lead">${c.lead}</p>
-        <div class="pills" style="margin-top:24px"><span class="chip">${c.client}</span><span class="chip">${c.event}</span>${c.tags.map(t=>`<span class="chip">${t}</span>`).join('')}</div>
-        <div class="poster"><span class="corner">${c.client}</span><span class="corner r">${c.event}</span>${posterHTML(c.poster)}</div>
-      </div>
-    </section>
-    <section><div class="wrap"><div class="case-body">${blocks}</div>
-      <a class="next-case" href="#${next.id}"><div><span>Próximo case</span><b>${next.short}</b></div><span class="btn ghost" aria-hidden="true">Ver case →</span></a>
-    </div></section>
-    ${ctaEnd('Quer um case desses <em>na sua marca</em>?','Pedir uma proposta','')}
-  </article>`;
-}
 function ctaEnd(h,btn,interest){
   return `<section class="cta-end"><div class="blob violet"></div><div class="wrap"><span class="eyebrow">Próximo passo</span><h2>${h}</h2><a class="btn" href="#contato" data-interest="${interest}">${btn} <span class="arr">→</span></a></div></section>`;
 }
@@ -923,7 +761,7 @@ function serviceView(key){
         <div class="crumbs"><a href="#inicio">Home</a> / <a href="#servicos">O que oferecemos</a> / <span>${s.crumb}</span></div>
         <h1>${s.title}</h1>
         <p class="lead">${s.lead}</p>
-        <div class="row"><a class="btn" href="#contato" data-interest="${s.interest}">Quero conversar sobre isso <span class="arr">→</span></a><a class="btn ghost" href="#${s.proof.id}">Ver case</a></div>
+        <div class="row"><a class="btn" href="#contato" data-interest="${s.interest}">Quero conversar sobre isso <span class="arr">→</span></a></div>
       </div>
     </section>
     <section class="pad" style="padding-top:30px"><div class="wrap">
@@ -935,15 +773,14 @@ function serviceView(key){
       <span class="eyebrow">Como trabalhamos</span>
       <h2 style="margin-top:18px;max-width:16ch">Do briefing ao <em>resultado</em>, em quatro movimentos.</h2>
       <ol class="steps">${s.steps.map(t=>`<li class="rv"><h4>${t[0]}</h4><p>${t[1]}</p></li>`).join('')}</ol>
-      <a class="proof-box rv" href="#${s.proof.id}" data-cursor="Abrir case"><div><span class="eyebrow">Prova real</span><strong style="margin-top:14px">${s.proof.n}</strong><p>${s.proof.t}</p></div><span class="btn ghost" aria-hidden="true">Ver o case →</span></a>
     </div></section>
     ${ctaEnd(`Vamos olhar de perto o <em>seu desafio</em>?`,'Falar com a Curiosa',s.interest)}
   </article>`;
 }
-$('#views').innerHTML = CASES.map(caseView).join('') + Object.keys(SERVICES).map(serviceView).join('');
+$('#views').innerHTML = Object.keys(SERVICES).map(serviceView).join('');
 
 /* ---------- roteamento por âncora ---------- */
-const VIEW_IDS=[...CASES.map(c=>c.id),...Object.keys(SERVICES)];
+const VIEW_IDS=[...Object.keys(SERVICES)];
 const home=$('#home');
 let pendingInterest='';
 function route(){
@@ -1018,6 +855,17 @@ function bandLoop(){
   requestAnimationFrame(bandLoop);
 }
 if(!reduce) requestAnimationFrame(bandLoop);
+
+/* ---------- frase da Jami: acende palavra por palavra ---------- */
+(function(){
+  const bq=$('#quoteText'); if(!bq) return;
+  const keys=['curiosa','criativas','resolutivas.'];
+  bq.innerHTML=bq.textContent.split(' ').map(w=>`<span class="qw${keys.includes(w)?' key':''}">${w}</span>`).join(' ');
+  const ws=$$('.qw',bq);
+  if(reduce){ws.forEach(w=>w.classList.add('on'));return}
+  const upd=()=>{const r=bq.getBoundingClientRect();const prog=Math.min(1,Math.max(0,(innerHeight*0.85-r.top)/(r.height+innerHeight*0.35)));const n=Math.round(prog*ws.length);ws.forEach((w,i)=>w.classList.toggle('on',i<n))};
+  addEventListener('scroll',upd,{passive:true}); upd();
+})();
 
 /* ---------- rotador e cards que viram ---------- */
 const rotItems=$$('#rot > span'); let ri=0;
